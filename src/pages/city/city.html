@@ -1,0 +1,21 @@
+
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>List of Cities</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="data">
+    <ion-list>
+      <ion-item *ngFor="let morley of data">
+        <ion-icon name="ios-pin-outline" item-start></ion-icon>
+          {{morley.location}}
+        
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

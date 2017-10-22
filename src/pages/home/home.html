@@ -1,14 +1,66 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
+  <ion-navbar color="secondary">
+    <ion-title text-center>
+      Pinay Weather Forecast
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <ion-item>
+        <ion-label floating>Search City</ion-label>
+        <ion-input type="text" [(ngModel)]="search" (keyup)="searchCity()"></ion-input>
+      </ion-item>
+      
+  <div *ngIf="aw">
+      <ion-card>
+         
+          <ion-card-content>
+            <ion-card-title text-center>
+              {{aw.location}}
+              </ion-card-title>
+            <p text-center>
+              Last Updated: {{aw.last_update}}
+            </p>
+          </ion-card-content>
+    
+      </ion-card>
+      
+      <ion-list *ngFor="let morley of aw.data">
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="{{morley.icon}}">
+            </ion-avatar>
+            <h2>{{morley.percent_chance_of_rain}} %</h2>
+            <p>{{morley.chance_of_rain}}</p>
+            <ion-note item-end>{{morley.time}}</ion-note>
+          </ion-item>
+        </ion-list>
+
+  </div>
+
+    <ion-footer >
+        <ion-toolbar color="secondary">
+            <ion-buttons end (click)="clickCity()">
+                <button ion-button icon-right color="royal">
+                  Cities
+                  <ion-icon name="ios-pin-outline"></ion-icon>
+                </button>
+              </ion-buttons>
+
+            <ion-buttons end (click)="clickAbout()">
+                <button ion-button icon-right color="royal">
+                  About
+                  <ion-icon name="ios-alert-outline"></ion-icon>
+                </button>
+              </ion-buttons>
+
+          <ion-buttons end (click)="clickContact()">
+            <button ion-button icon-right color="royal">
+                Contact
+              <ion-icon name="ios-call-outline"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>  
 </ion-content>
